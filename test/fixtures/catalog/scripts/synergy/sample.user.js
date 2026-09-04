@@ -15,8 +15,8 @@
 // @grant            none
 // @run-at           document-idle
 // @noframes
-// @updateURL        https://raw.githubusercontent.com/rubberduckinatruck/tamper-control-center/main/test/fixtures/catalog/scripts/synergy/sample.user.js
-// @downloadURL      https://raw.githubusercontent.com/rubberduckinatruck/tamper-control-center/main/test/fixtures/catalog/scripts/synergy/sample.user.js
+// @updateURL        https://raw.githubusercontent.com/rubberduckinatruck/tamper-control-center-v2/main/test/fixtures/catalog/scripts/synergy/sample.user.js
+// @downloadURL      https://raw.githubusercontent.com/rubberduckinatruck/tamper-control-center-v2/main/test/fixtures/catalog/scripts/synergy/sample.user.js
 // ==/UserScript==
 
 (() => {})();
