@@ -2,27 +2,145 @@
   "schemaVersion": 2,
   "repository": {
     "owner": "rubberduckinatruck",
-    "name": "tamper-control-center",
+    "name": "tamper-control-center-v2",
     "branch": "main",
-    "pagesUrl": "https://rubberduckinatruck.github.io/tamper-control-center/",
-    "sourceBaseUrl": "https://github.com/rubberduckinatruck/tamper-control-center/blob/main",
-    "rawBaseUrl": "https://raw.githubusercontent.com/rubberduckinatruck/tamper-control-center/main"
+    "pagesUrl": "https://rubberduckinatruck.github.io/tamper-control-center-v2/",
+    "sourceBaseUrl": "https://github.com/rubberduckinatruck/tamper-control-center-v2/blob/main",
+    "rawBaseUrl": "https://raw.githubusercontent.com/rubberduckinatruck/tamper-control-center-v2/main"
   },
   "build": {
     "scanned": 15,
-    "published": 0,
-    "skipped": 15,
-    "warnings": 93,
+    "published": 3,
+    "skipped": 12,
+    "warnings": 84,
     "draftsValidated": 0
   },
   "summary": {
-    "total": 0,
-    "current": 0,
+    "total": 3,
+    "current": 3,
     "archived": 0,
-    "byCategory": {},
-    "byRole": {},
-    "byStatus": {}
+    "byCategory": {
+      "google-apps-script": 1,
+      "synergy": 1,
+      "wayground": 1
+    },
+    "byRole": {
+      "development": 1,
+      "teaching": 2
+    },
+    "byStatus": {
+      "live": 3
+    }
   },
-  "scripts": [],
-  "migrationNotice": "15 userscripts are awaiting valid metadata and were skipped."
+  "scripts": [
+    {
+      "id": "gas-file-script-exporter",
+      "name": "Google Apps Script File Exporter",
+      "installedName": "GAS File Script Exporter",
+      "version": "1.2.0",
+      "description": "Export Apps Script project files from the editor UI: real clicks, Monaco/DOM/init-data fallbacks, TT/CSP-safe, duplicate-handling, progress UI, safe guards, and optional force-.txt download mode.",
+      "author": "you",
+      "namespace": "https://tampermonkey.net/",
+      "category": "google-apps-script",
+      "role": "development",
+      "status": "live",
+      "tags": [
+        "apps script",
+        "backup",
+        "development",
+        "exporter",
+        "google"
+      ],
+      "note": null,
+      "file": "scripts/gas-file-script-exporter.user.js",
+      "installUrl": "https://raw.githubusercontent.com/rubberduckinatruck/tamper-control-center-v2/main/scripts/gas-file-script-exporter.user.js",
+      "updateUrl": "https://raw.githubusercontent.com/rubberduckinatruck/tamper-control-center-v2/main/scripts/gas-file-script-exporter.user.js",
+      "matches": [
+        "https://script.google.com/*/home/projects/*/edit",
+        "https://script.google.com/home/projects/*/edit",
+        "https://script.google.com/u/0/home/projects/*"
+      ],
+      "includes": [],
+      "excludes": [],
+      "grants": [
+        "GM_addStyle",
+        "unsafeWindow"
+      ],
+      "requires": [],
+      "runAt": "document-idle",
+      "noframes": true
+    },
+    {
+      "id": "synergy-quick-grade-mapper",
+      "name": "Synergy Quick Grade Mapper",
+      "installedName": "2.5 UPDATED Synergy Quick Grade Mapper (Score + Missing/Late + Note)",
+      "version": "2.5",
+      "description": "Paste Name | Score/Letter | Comment | Note from Google Sheets and fill the Quick Grade page (letters, Missing/Late, public notes). Includes grade-scale presets, blank-score behavior toggle, diff-based writes, progress, preview, persistence, and colored logs.",
+      "author": "you",
+      "namespace": "https://afsd.edupoint.com/",
+      "category": "synergy",
+      "role": "teaching",
+      "status": "live",
+      "tags": [
+        "gradebook",
+        "grading",
+        "late",
+        "missing",
+        "notes",
+        "scores"
+      ],
+      "note": null,
+      "file": "scripts/synergy-quick-grade-mapper.user.js",
+      "installUrl": "https://raw.githubusercontent.com/rubberduckinatruck/tamper-control-center-v2/main/scripts/synergy-quick-grade-mapper.user.js",
+      "updateUrl": "https://raw.githubusercontent.com/rubberduckinatruck/tamper-control-center-v2/main/scripts/synergy-quick-grade-mapper.user.js",
+      "matches": [
+        "https://*.edupoint.com/*",
+        "https://afsd.edupoint.com/*"
+      ],
+      "includes": [],
+      "excludes": [],
+      "grants": [
+        "none"
+      ],
+      "requires": [],
+      "runAt": "document-idle",
+      "noframes": false
+    },
+    {
+      "id": "wayground-gradebook-points-extractor",
+      "name": "Wayground Gradebook Points Extractor",
+      "installedName": "Wayground Gradebook Points Extractor",
+      "version": "1.0.0",
+      "description": "Preview and copy canonical student names, best-attempt raw points, and Missing comments from Wayground reports.",
+      "author": "Big Poppa",
+      "namespace": "https://wayground.com/",
+      "category": "wayground",
+      "role": "teaching",
+      "status": "live",
+      "tags": [
+        "gradebook",
+        "missing",
+        "points",
+        "reports",
+        "student names"
+      ],
+      "note": null,
+      "file": "scripts/wayground-gradebook-points-extractor.user.js",
+      "installUrl": "https://raw.githubusercontent.com/rubberduckinatruck/tamper-control-center-v2/main/scripts/wayground-gradebook-points-extractor.user.js",
+      "updateUrl": "https://raw.githubusercontent.com/rubberduckinatruck/tamper-control-center-v2/main/scripts/wayground-gradebook-points-extractor.user.js",
+      "matches": [
+        "https://wayground.com/session/admin/reports",
+        "https://wayground.com/session/admin/reports/*"
+      ],
+      "includes": [],
+      "excludes": [],
+      "grants": [
+        "GM_setClipboard"
+      ],
+      "requires": [],
+      "runAt": "document-idle",
+      "noframes": true
+    }
+  ],
+  "migrationNotice": "12 userscripts are awaiting valid metadata and were skipped."
 }
