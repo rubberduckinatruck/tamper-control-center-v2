@@ -25,6 +25,7 @@ test("generates a normalized deterministic v2 catalog", async () => {
   assert.equal(firstText, secondText);
   const catalog = JSON.parse(firstText);
   assert.equal(catalog.schemaVersion, 2);
+  assert.deepEqual(catalog.build, { scanned: 1, published: 1, skipped: 0, warnings: 0, draftsValidated: 0 });
   assert.equal(catalog.summary.total, 1);
   assert.equal(catalog.summary.current, 1);
   assert.deepEqual(catalog.summary.byCategory, { synergy: 1 });
@@ -35,11 +36,17 @@ test("generates a normalized deterministic v2 catalog", async () => {
   assert.equal(catalog.scripts[0].noframes, true);
 });
 
-test("reports all missing required Control Center fields", async () => {
+test("skips scripts with missing metadata without failing the catalog", async () => {
   const outputDirectory = await mkdtemp(path.join(os.tmpdir(), "control-center-invalid-"));
   const result = spawnSync(process.execPath, [path.join(ROOT, "tools/generate-catalog.mjs"), "--scripts-dir", path.join(ROOT, "test/fixtures/invalid/scripts"), "--archive-dir", path.join(FIXTURE, "archive"), "--drafts-dir", path.join(FIXTURE, "drafts"), "--output", path.join(outputDirectory, "scripts.json")], { encoding: "utf8" });
-  assert.notEqual(result.status, 0);
+  assert.equal(result.status, 0, result.stderr);
   assert.match(result.stderr, /missing required @cc-id/);
   assert.match(result.stderr, /missing required @cc-category/);
   assert.match(result.stderr, /missing required @cc-status/);
+  const catalog = JSON.parse(await readFile(path.join(outputDirectory, "scripts.json"), "utf8"));
+  assert.equal(catalog.build.scanned, 1);
+  assert.equal(catalog.build.published, 0);
+  assert.equal(catalog.build.skipped, 1);
+  assert.equal(catalog.scripts.length, 0);
+  assert.match(catalog.migrationNotice, /1 userscript is awaiting valid metadata/);
 });

@@ -85,15 +85,30 @@ function inspect({ metadata, source, file, rootDir, area, config }) {
 }
 
 function crossValidate(records) {
-  const errors = [], versions = new Map(), current = new Map();
+  const versions = new Map(), current = new Map(), conflicts = new Map();
+  const flag = (record, message) => {
+    if (!conflicts.has(record.file)) conflicts.set(record.file, []);
+    conflicts.get(record.file).push(message);
+  };
   for (const record of records) {
     const identity = `${record.id}@${record.version}`;
-    if (versions.has(identity)) errors.push(`${record.file}: duplicate identity ${identity}; also in ${versions.get(identity)}`); else versions.set(identity, record.file);
+    if (versions.has(identity)) {
+      const first = versions.get(identity);
+      flag(first, `duplicate identity ${identity}; also in ${record.file}`);
+      flag(record, `duplicate identity ${identity}; also in ${first.file}`);
+    } else versions.set(identity, record);
     if (["live", "beta"].includes(record.status)) {
-      if (current.has(record.id)) errors.push(`${record.file}: more than one current file uses @cc-id ${record.id}; also in ${current.get(record.id)}`); else current.set(record.id, record.file);
+      if (current.has(record.id)) {
+        const first = current.get(record.id);
+        flag(first, `more than one current file uses @cc-id ${record.id}; also in ${record.file}`);
+        flag(record, `more than one current file uses @cc-id ${record.id}; also in ${first.file}`);
+      } else current.set(record.id, record);
     }
   }
-  return errors;
+  return {
+    records: records.filter(record => !conflicts.has(record.file)),
+    skipped: [...conflicts].map(([file, reasons]) => ({ file, reasons: [...new Set(reasons)] })),
+  };
 }
 
 function summaries(records) {
@@ -105,23 +120,38 @@ async function run(options) {
   const config = JSON.parse(await readFile(options.config, "utf8"));
   const areas = [{ name: "scripts", dir: options.scriptsDir, publish: true }, { name: "archive", dir: options.archiveDir, publish: true }];
   if (options.checkDrafts) areas.push({ name: "drafts", dir: options.draftsDir, publish: false });
-  const records = [], errors = [], warnings = [];
+  const records = [], skipped = [], warnings = [];
+  let scanned = 0, draftsValidated = 0;
   for (const area of areas) for (const file of await filesBelow(area.dir)) {
+    scanned += 1;
     const repositoryPath = posix(path.relative(ROOT, file));
     try {
       const source = await readFile(file, "utf8");
       const result = inspect({ metadata: metadataFrom(source, repositoryPath), source, file, rootDir: area.dir, area: area.name, config });
-      errors.push(...result.errors); warnings.push(...result.warnings);
-      if (area.publish && result.errors.length === 0) records.push(result.record);
-    } catch (error) { errors.push(error.message); }
+      warnings.push(...result.warnings);
+      if (result.errors.length) skipped.push({ file: repositoryPath, reasons: result.errors.map(message => message.replace(`${repositoryPath}: `, "")) });
+      else if (area.publish) records.push(result.record);
+      else draftsValidated += 1;
+    } catch (error) {
+      skipped.push({ file: repositoryPath, reasons: [error.message.replace(`${repositoryPath}: `, "")] });
+    }
   }
-  errors.push(...crossValidate(records));
+  const checked = crossValidate(records);
+  skipped.push(...checked.skipped);
   warnings.forEach(message => console.warn(`Warning: ${message}`));
-  if (errors.length) throw new Error(`Catalog generation failed:\n${errors.map(e => `- ${e}`).join("\n")}`);
-  records.sort((a, b) => a.category.localeCompare(b.category) || a.name.localeCompare(b.name) || a.version.localeCompare(b.version));
-  const catalog = { schemaVersion: 2, repository: config.repository, summary: summaries(records), scripts: records };
+  skipped.forEach(item => console.warn(`::warning file=${item.file}::Skipped ${item.file}: ${item.reasons.join("; ")}`));
+  checked.records.sort((a, b) => a.category.localeCompare(b.category) || a.name.localeCompare(b.name) || a.version.localeCompare(b.version));
+  const issueCount = warnings.length + skipped.reduce((total, item) => total + item.reasons.length, 0);
+  const catalog = {
+    schemaVersion: 2,
+    repository: config.repository,
+    build: { scanned, published: checked.records.length, skipped: skipped.length, warnings: issueCount, draftsValidated },
+    summary: summaries(checked.records),
+    scripts: checked.records,
+  };
+  if (skipped.length) catalog.migrationNotice = `${skipped.length} userscript${skipped.length === 1 ? " is" : "s are"} awaiting valid metadata and were skipped.`;
   await writeFile(options.output, JSON.stringify(catalog, null, 2) + "\n", "utf8");
-  console.log(`Generated ${posix(path.relative(ROOT, options.output))} with ${records.length} published scripts.`);
+  console.log(`Catalog generated successfully. Scanned: ${scanned}; published: ${checked.records.length}; skipped: ${skipped.length}; warnings: ${issueCount}.`);
 }
 
 try { await run(argumentsFrom(process.argv.slice(2))); } catch (error) { console.error(error.message); process.exitCode = 1; }

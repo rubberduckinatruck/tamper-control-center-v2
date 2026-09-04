@@ -8,7 +8,8 @@ A self-updating GitHub Pages catalog for organizing, installing, and preserving 
 2. Add the required Control Center metadata and canonical update URLs.
 3. Run `npm run check` locally or push to `main`.
 4. Validation scans current, archived, and draft scripts.
-5. `scripts.json` is regenerated and the GitHub Pages site reads it automatically.
+5. Invalid or incomplete userscripts are reported and skipped.
+6. `scripts.json` is regenerated from every valid script and the GitHub Pages site reads it automatically.
 
 ## Required metadata
 
@@ -52,6 +53,6 @@ The project has no third-party package dependencies. Node.js 20 or newer is suff
 
 ## Migration note
 
-The legacy userscripts are preserved unchanged. Until their headers receive the required `@cc-*` metadata and canonical raw GitHub URLs, validation intentionally fails with a complete file-by-file report. The included bootstrap `scripts.json` keeps the rebuilt website usable during this migration.
+Legacy userscripts can remain in place unchanged. Until their headers receive the required `@cc-*` metadata and canonical raw GitHub URLs, the generator reports and skips them while continuing to publish every valid script. Script-level metadata, URL, syntax, and identity problems do not fail the workflow; unreadable configuration or an inability to write `scripts.json` still does.
 
 See [scripts/README.md](scripts/README.md) for the exact add/update workflow and [archive/README.md](archive/README.md) for version preservation.

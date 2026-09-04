@@ -1,7 +1,8 @@
 {
   "schemaVersion": 2,
   "repository": { "owner": "rubberduckinatruck", "name": "tamper-control-center", "branch": "main", "pagesUrl": "https://rubberduckinatruck.github.io/tamper-control-center/", "sourceBaseUrl": "https://github.com/rubberduckinatruck/tamper-control-center/blob/main", "rawBaseUrl": "https://raw.githubusercontent.com/rubberduckinatruck/tamper-control-center/main" },
+  "build": { "scanned": 0, "published": 0, "skipped": 0, "warnings": 0, "draftsValidated": 0 },
   "summary": { "total": 0, "current": 0, "archived": 0, "byCategory": {}, "byRole": {}, "byStatus": {} },
   "scripts": [],
-  "migrationNotice": "Add the required @cc-* metadata to legacy userscripts, then run npm run catalog."
+  "migrationNotice": "Legacy userscripts without valid Control Center metadata are skipped until they are ready."
 }

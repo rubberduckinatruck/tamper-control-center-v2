@@ -2,6 +2,7 @@ import { definition, escapeHtml, loadControlCenter, loadNav, ordered, setStatus 
 
 await loadNav();
 const notice = document.querySelector("#page-notice");
+const migrationNotice = document.querySelector("#migration-notice");
 
 try {
   const { catalog, config } = await loadControlCenter();
@@ -10,6 +11,9 @@ try {
   document.querySelector("#beta-count").textContent = current.filter(script => script.status === "beta").length;
   document.querySelector("#category-count").textContent = new Set(current.map(script => script.category)).size;
   document.querySelector("#archive-count").textContent = catalog.scripts.filter(script => ["archived", "deprecated"].includes(script.status)).length;
+  if ((catalog.build?.skipped ?? 0) > 0) {
+    setStatus(migrationNotice, `${catalog.build.skipped} repository script${catalog.build.skipped === 1 ? " is" : "s are"} waiting for valid metadata and did not appear in the catalog.`, "migration");
+  }
 
   const grid = document.querySelector("#category-grid");
   for (const category of ordered(current.map(script => script.category), "categories", config)) {
@@ -30,7 +34,7 @@ try {
     list.append(item);
   }
 
-  if (!current.length) setStatus(notice, catalog.migrationNotice || "No current scripts are cataloged yet. Add Control Center metadata and regenerate the catalog.", "migration");
+  if (!current.length) setStatus(notice, "No valid current scripts are cataloged yet. Add Control Center metadata and regenerate the catalog.", "migration");
 } catch (error) {
   setStatus(notice, `The catalog could not be loaded: ${error.message}`, "error");
 }
