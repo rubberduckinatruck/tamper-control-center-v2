@@ -1,0 +1,47 @@
+name: Build userscript catalog
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/**"
+      - "archive/**"
+      - "drafts/**"
+      - "tools/**"
+      - "test/**"
+      - "catalog.config.json"
+      - "package.json"
+      - ".github/workflows/build-catalog.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-userscript-catalog
+  cancel-in-progress: true
+
+jobs:
+  build:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Use Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Run tests and generate catalog
+        run: npm run check
+      - name: Commit catalog when changed
+        run: |
+          if git diff --quiet -- scripts.json; then
+            echo "scripts.json is already current."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add scripts.json
+          git commit -m "chore: rebuild userscript catalog"
+          git push
