@@ -1,11 +1,11 @@
 {
   "repository": {
     "owner": "rubberduckinatruck",
-    "name": "tamper-control-center",
+    "name": "tamper-control-center-v2",
     "branch": "main",
-    "pagesUrl": "https://rubberduckinatruck.github.io/tamper-control-center/",
-    "sourceBaseUrl": "https://github.com/rubberduckinatruck/tamper-control-center/blob/main",
-    "rawBaseUrl": "https://raw.githubusercontent.com/rubberduckinatruck/tamper-control-center/main"
+    "pagesUrl": "https://rubberduckinatruck.github.io/tamper-control-center-v2/",
+    "sourceBaseUrl": "https://github.com/rubberduckinatruck/tamper-control-center-v2/blob/main",
+    "rawBaseUrl": "https://raw.githubusercontent.com/rubberduckinatruck/tamper-control-center-v2/main"
   },
   "statuses": {
     "live": { "label": "Live", "order": 1 }, "beta": { "label": "Beta", "order": 2 },
