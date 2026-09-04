@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { mkdtemp, readFile } from "node:fs/promises";
+import { mkdir, mkdtemp, readFile, writeFile } from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import { spawnSync } from "node:child_process";
@@ -34,6 +34,41 @@ test("generates a normalized deterministic v2 catalog", async () => {
   assert.equal(catalog.scripts[0].name, "Synergy Sample");
   assert.equal(catalog.scripts[0].installedName, "Sample Installed Name");
   assert.equal(catalog.scripts[0].noframes, true);
+});
+
+test("publishes a flat scripts file using its metadata category", async () => {
+  const temporaryRoot = await mkdtemp(path.join(os.tmpdir(), "control-center-flat-"));
+  const scriptsDirectory = path.join(temporaryRoot, "scripts");
+  const outputFile = path.join(temporaryRoot, "scripts.json");
+  const scriptFile = path.join(scriptsDirectory, "flat-example.user.js");
+  await mkdir(scriptsDirectory);
+  const config = JSON.parse(await readFile(path.join(ROOT, "catalog.config.json"), "utf8"));
+  const repositoryPath = path.relative(ROOT, scriptFile).split(path.sep).join("/");
+  const rawUrl = `${config.repository.rawBaseUrl}/${repositoryPath}`;
+  await writeFile(scriptFile, `// ==UserScript==
+// @name             Flat Example
+// @version          1.0.0
+// @description      Tests metadata-authoritative flat-file categories.
+// @cc-id            flat-example
+// @cc-display-name  Flat Example
+// @cc-category      synergy
+// @cc-role          teaching
+// @cc-status        live
+// @cc-tags          flat, test
+// @match            https://example.com/*
+// @grant            none
+// @updateURL        ${rawUrl}
+// @downloadURL      ${rawUrl}
+// ==/UserScript==
+(() => {})();
+`, "utf8");
+  const result = spawnSync(process.execPath, [path.join(ROOT, "tools/generate-catalog.mjs"), "--scripts-dir", scriptsDirectory, "--archive-dir", path.join(temporaryRoot, "archive"), "--drafts-dir", path.join(temporaryRoot, "drafts"), "--output", outputFile], { encoding: "utf8" });
+  assert.equal(result.status, 0, result.stderr);
+  const catalog = JSON.parse(await readFile(outputFile, "utf8"));
+  assert.equal(catalog.build.published, 1);
+  assert.equal(catalog.build.skipped, 0);
+  assert.equal(catalog.scripts[0].category, "synergy");
+  assert.equal(catalog.scripts[0].file, repositoryPath);
 });
 
 test("skips scripts with missing metadata without failing the catalog", async () => {

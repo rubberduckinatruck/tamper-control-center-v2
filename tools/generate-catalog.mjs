@@ -62,8 +62,7 @@ function inspect({ metadata, source, file, rootDir, area, config }) {
   for (const field of REQUIRED) if (!metadata[field]) report(errors, `missing required @${field}`);
   for (const field of ["cc-id", "cc-category", "cc-role"]) if (metadata[field] && !SLUG.test(metadata[field])) report(errors, `@${field} must be a lowercase slug`);
   if (metadata["cc-status"] && !STATUSES.has(metadata["cc-status"])) report(errors, `unknown @cc-status "${metadata["cc-status"]}"`);
-  if (!folderCategory) report(errors, "userscripts must be inside a category folder");
-  else if (metadata["cc-category"] && folderCategory !== metadata["cc-category"]) report(warnings, `folder "${folderCategory}" differs from @cc-category "${metadata["cc-category"]}"`);
+  if (folderCategory && metadata["cc-category"] && folderCategory !== metadata["cc-category"]) report(warnings, `folder "${folderCategory}" differs from @cc-category "${metadata["cc-category"]}"; using metadata category`);
   if (!/^[a-z0-9]+(?:-[a-z0-9]+)*\.user\.js$/.test(path.basename(file))) report(errors, "filename must use lowercase kebab-case and end in .user.js");
   if (area === "scripts" && /(?:^|-)v?\d+(?:[.-]\d+)+(?:-|\.user\.js$)/i.test(path.basename(file))) report(errors, "current filename must not contain a version number");
   if (area === "scripts" && metadata["cc-status"] && !["live", "beta"].includes(metadata["cc-status"])) report(errors, "files in scripts/ must be live or beta");
