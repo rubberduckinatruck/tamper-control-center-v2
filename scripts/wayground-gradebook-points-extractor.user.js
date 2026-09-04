@@ -17,8 +17,8 @@
 // @noframes
 // @run-at       document-idle
 //
-// @updateURL        RAW-GITHUB-URL/scripts/wayground/gradebook-points-extractor.user.js
-// @downloadURL      RAW-GITHUB-URL/scripts/wayground/gradebook-points-extractor.user.js
+// @updateURL    https://raw.githubusercontent.com/rubberduckinatruck/tamper-control-center-v2/main/scripts/wayground-gradebook-points-extractor.user.js
+// @downloadURL  https://raw.githubusercontent.com/rubberduckinatruck/tamper-control-center-v2/main/scripts/wayground-gradebook-points-extractor.user.js
 //
 // ==/UserScript==
 
