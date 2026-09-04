@@ -17,8 +17,8 @@
 // @run-at       document-idle
 // @grant        none
 //
-// @updateURL        RAW-GITHUB-URL/scripts/synergy/quick-grade-mapper.user.js
-// @downloadURL      RAW-GITHUB-URL/scripts/synergy/quick-grade-mapper.user.js
+// @updateURL    https://raw.githubusercontent.com/rubberduckinatruck/tamper-control-center-v2/main/scripts/synergy-quick-grade-mapper.user.js
+// @downloadURL  https://raw.githubusercontent.com/rubberduckinatruck/tamper-control-center-v2/main/scripts/synergy-quick-grade-mapper.user.js
 //
 // ==/UserScript==
 
