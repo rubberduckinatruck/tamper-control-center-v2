@@ -1,0 +1,9 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Search and install current Tampermonkey userscripts."><title>Script Library · Tampermonkey Control Center</title><link rel="stylesheet" href="assets/style.css"></head>
+<body data-library-mode="current"><div data-nav-slot></div><main class="page-shell">
+  <header class="page-heading"><p class="eyebrow">Current scripts</p><h1>Script Library</h1><p>Search the scripts that are actually in the repository. Live and beta entries appear here automatically.</p></header>
+  <div id="page-notice" hidden></div>
+  <section class="filters" aria-label="Script filters"><label class="search-field"><span>Search</span><input id="search" type="search" placeholder="Name, tag, site, or description"></label><label><span>Category</span><select id="category-filter"><option value="">All categories</option></select></label><label><span>Role</span><select id="role-filter"><option value="">All roles</option></select></label><label><span>Status</span><select id="status-filter"><option value="">All statuses</option></select></label><button id="clear-filters" class="button" type="button">Clear filters</button></section>
+  <div class="result-bar"><strong id="result-count">0 scripts</strong><a href="archive.html">Looking for an older version?</a></div><div id="script-grid" class="script-grid"></div><div id="empty-state" class="empty-state" hidden><h2>No scripts found</h2><p>Try clearing a filter or using a broader search.</p></div>
+</main><footer>Install links open Tampermonkey using each script’s canonical raw GitHub URL.</footer><script type="module" src="assets/script-library.js"></script></body></html>

@@ -1,0 +1,5 @@
+{
+  "name": "tamper-control-center-v2", "version": "2.0.0", "private": true, "type": "module",
+  "scripts": { "catalog": "node tools/generate-catalog.mjs", "validate": "node tools/generate-catalog.mjs --output /tmp/tamper-control-center-catalog.json", "test": "node --test test/*.test.mjs", "check": "npm run test && npm run catalog" },
+  "engines": { "node": ">=20" }
+}

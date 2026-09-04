@@ -1,0 +1,31 @@
+{
+  "repository": {
+    "owner": "rubberduckinatruck",
+    "name": "tamper-control-center",
+    "branch": "main",
+    "pagesUrl": "https://rubberduckinatruck.github.io/tamper-control-center/",
+    "sourceBaseUrl": "https://github.com/rubberduckinatruck/tamper-control-center/blob/main",
+    "rawBaseUrl": "https://raw.githubusercontent.com/rubberduckinatruck/tamper-control-center/main"
+  },
+  "statuses": {
+    "live": { "label": "Live", "order": 1 }, "beta": { "label": "Beta", "order": 2 },
+    "draft": { "label": "Draft", "order": 3 }, "archived": { "label": "Archived", "order": 4 },
+    "deprecated": { "label": "Deprecated", "order": 5 }
+  },
+  "roles": {
+    "teaching": { "label": "Teaching", "icon": "🎓", "order": 1 },
+    "development": { "label": "Development", "icon": "🧰", "order": 2 },
+    "union": { "label": "Union", "icon": "✊", "order": 3 },
+    "personal": { "label": "Personal", "icon": "🏠", "order": 4 },
+    "system": { "label": "System", "icon": "⚙️", "order": 5 }
+  },
+  "categories": {
+    "synergy": { "label": "Synergy", "icon": "📘", "description": "Gradebook and student-information workflows.", "order": 1 },
+    "wayground": { "label": "Wayground", "icon": "🎯", "description": "Assessment and report workflows.", "order": 2 },
+    "google-classroom": { "label": "Google Classroom", "icon": "🏫", "description": "Classroom organization and assignment tools.", "order": 3 },
+    "google-apps-script": { "label": "Google Apps Script", "icon": "🧩", "description": "Apps Script editor and project utilities.", "order": 4 },
+    "data-tools": { "label": "Data Tools", "icon": "📊", "description": "Extraction, transformation, and visualization tools.", "order": 5 },
+    "price-trackers": { "label": "Price Trackers", "icon": "💸", "description": "Shopping and price-comparison helpers.", "order": 6 },
+    "system": { "label": "System", "icon": "⚙️", "description": "Control Center infrastructure and utilities.", "order": 7 }
+  }
+}
