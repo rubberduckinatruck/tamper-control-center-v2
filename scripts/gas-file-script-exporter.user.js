@@ -20,8 +20,8 @@
 // @run-at       document-idle
 // @noframes
 //
-// @updateURL        RAW-GITHUB-URL/scripts/google-apps-script/file-script-exporter.user.js
-// @downloadURL      RAW-GITHUB-URL/scripts/google-apps-script/file-script-exporter.user.js
+// @updateURL    https://raw.githubusercontent.com/rubberduckinatruck/tamper-control-center-v2/main/scripts/gas-file-script-exporter.user.js
+// @downloadURL  https://raw.githubusercontent.com/rubberduckinatruck/tamper-control-center-v2/main/scripts/gas-file-script-exporter.user.js
 //
 // ==/UserScript==
 
