@@ -3,7 +3,7 @@
 // @namespace    https://tampermonkey.net/
 // @version      1.2.0
 // @description  Export Apps Script project files from the editor UI: real clicks, Monaco/DOM/init-data fallbacks, TT/CSP-safe, duplicate-handling, progress UI, safe guards, and optional force-.txt download mode.
-// @author       you
+// @author       Big Poppa
 //
 // @cc-id            gas-file-script-exporter
 // @cc-display-name  Google Apps Script File Exporter
@@ -20,8 +20,8 @@
 // @run-at       document-idle
 // @noframes
 //
-// @updateURL    https://raw.githubusercontent.com/rubberduckinatruck/tamper-control-center-v2/main/scripts/gas-file-script-exporter.user.js
-// @downloadURL  https://raw.githubusercontent.com/rubberduckinatruck/tamper-control-center-v2/main/scripts/gas-file-script-exporter.user.js
+// @updateURL    https://raw.githubusercontent.com/rubberduckinatruck/tamper-control-center-v2/main/scripts/gas/gas-file-script-exporter.user.js
+// @downloadURL  https://raw.githubusercontent.com/rubberduckinatruck/tamper-control-center-v2/main/scripts/gas/gas-file-script-exporter.user.js
 //
 // ==/UserScript==
 

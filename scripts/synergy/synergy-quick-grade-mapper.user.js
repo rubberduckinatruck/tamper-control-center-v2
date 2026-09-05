@@ -3,7 +3,8 @@
 // @namespace    https://afsd.edupoint.com/
 // @version      2.5
 // @description  Paste Name | Score/Letter | Comment | Note from Google Sheets and fill the Quick Grade page (letters, Missing/Late, public notes). Includes grade-scale presets, blank-score behavior toggle, diff-based writes, progress, preview, persistence, and colored logs.
-// @author       you
+// @author       Big Poppa
+
 //
 // @cc-id            synergy-quick-grade-mapper
 // @cc-display-name  Synergy Quick Grade Mapper
@@ -17,8 +18,8 @@
 // @run-at       document-idle
 // @grant        none
 //
-// @updateURL    https://raw.githubusercontent.com/rubberduckinatruck/tamper-control-center-v2/main/scripts/synergy-quick-grade-mapper.user.js
-// @downloadURL  https://raw.githubusercontent.com/rubberduckinatruck/tamper-control-center-v2/main/scripts/synergy-quick-grade-mapper.user.js
+// @updateURL    https://raw.githubusercontent.com/rubberduckinatruck/tamper-control-center-v2/main/scripts/synergy/synergy-quick-grade-mapper.user.js
+// @downloadURL  https://raw.githubusercontent.com/rubberduckinatruck/tamper-control-center-v2/main/scripts/synergy/synergy-quick-grade-mapper.user.js
 //
 // ==/UserScript==
 
