@@ -9,37 +9,189 @@
     "rawBaseUrl": "https://raw.githubusercontent.com/rubberduckinatruck/tamper-control-center-v2/main"
   },
   "build": {
-    "scanned": 15,
-    "published": 3,
-    "skipped": 12,
-    "warnings": 84,
+    "scanned": 27,
+    "published": 14,
+    "skipped": 13,
+    "warnings": 96,
     "draftsValidated": 0
   },
   "summary": {
-    "total": 3,
-    "current": 3,
+    "total": 14,
+    "current": 14,
     "archived": 0,
     "byCategory": {
-      "google-apps-script": 1,
+      "canva": 1,
+      "class-companion": 1,
+      "gmail": 1,
+      "google-apps-script": 3,
+      "google-classroom": 2,
+      "gpt": 3,
+      "special-education": 1,
       "synergy": 1,
       "wayground": 1
     },
     "byRole": {
-      "development": 1,
-      "teaching": 2
+      "development": 3,
+      "personal": 5,
+      "teaching": 6
     },
     "byStatus": {
-      "live": 3
+      "beta": 1,
+      "live": 13
     }
   },
   "scripts": [
+    {
+      "id": "canva-view-only-presentation-combined-pdf",
+      "name": "Canva View-Only Presentation to PDF",
+      "installedName": "Canva View-Only Presentation to Combined PDF",
+      "version": "1.0.2",
+      "description": "Captures every page displayed in a Canva view-only design and combines the pages into one PDF.",
+      "author": "Big Poppa",
+      "namespace": "local.canva.offline",
+      "category": "canva",
+      "role": "personal",
+      "status": "live",
+      "tags": [
+        "canva",
+        "capture",
+        "export",
+        "pdf",
+        "presentations"
+      ],
+      "note": "Requires access to the complete view-only Canva presentation.",
+      "file": "scripts/canva/canva-view-only-presentation-combined-pdf.user.js",
+      "installUrl": "https://raw.githubusercontent.com/rubberduckinatruck/tamper-control-center-v2/main/scripts/canva/canva-view-only-presentation-combined-pdf.user.js",
+      "updateUrl": "https://raw.githubusercontent.com/rubberduckinatruck/tamper-control-center-v2/main/scripts/canva/canva-view-only-presentation-combined-pdf.user.js",
+      "matches": [
+        "https://www.canva.com/design/*/view*",
+        "https://www.canva.com/design/*/watch*"
+      ],
+      "includes": [],
+      "excludes": [],
+      "grants": [
+        "none"
+      ],
+      "requires": [
+        "https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js",
+        "https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"
+      ],
+      "runAt": "document-idle",
+      "noframes": false
+    },
+    {
+      "id": "class-companion-full-submission-extractor",
+      "name": "Class Companion Full Submission Extractor",
+      "installedName": "Class Companion - Full Submission Extractor",
+      "version": "2.0.0",
+      "description": "Export full student written submission data from Class Companion for the current assignment or current class period.",
+      "author": "Big Poppa",
+      "namespace": "https://openai.com/",
+      "category": "class-companion",
+      "role": "teaching",
+      "status": "live",
+      "tags": [
+        "assignments",
+        "class companion",
+        "class periods",
+        "export",
+        "student submissions"
+      ],
+      "note": "Exports student submission data from the currently open assignment or class-period view.",
+      "file": "scripts/class-companion-full-submission-extractor.user.js",
+      "installUrl": "https://raw.githubusercontent.com/rubberduckinatruck/tamper-control-center-v2/main/scripts/class-companion-full-submission-extractor.user.js",
+      "updateUrl": "https://raw.githubusercontent.com/rubberduckinatruck/tamper-control-center-v2/main/scripts/class-companion-full-submission-extractor.user.js",
+      "matches": [
+        "https://classcompanion.com/teacher/classes/*",
+        "https://classcompanion.com/teacher/classes/*/assignments/*/submissions",
+        "https://classcompanion.com/teacher/classes/*/assignments/*/submissions*",
+        "https://classcompanion.com/teacher/classes/*/submissions/*"
+      ],
+      "includes": [],
+      "excludes": [],
+      "grants": [
+        "none"
+      ],
+      "requires": [],
+      "runAt": "document-idle",
+      "noframes": false
+    },
+    {
+      "id": "gmail-quick-sort-cleanup-panel",
+      "name": "Gmail Quick-Sort Cleanup Panel",
+      "installedName": "Gmail Quick-Sort Cleanup Panel",
+      "version": "1.0",
+      "description": "Injects quick-sorting buttons into Gmail using native search parameters.",
+      "author": "Big Poppa",
+      "namespace": "http://tampermonkey.net/",
+      "category": "gmail",
+      "role": "personal",
+      "status": "live",
+      "tags": [
+        "cleanup",
+        "email",
+        "gmail",
+        "inbox",
+        "sorting"
+      ],
+      "note": null,
+      "file": "scripts/gmail/gmail-quick-sort-cleanup-panel.user.js",
+      "installUrl": "https://raw.githubusercontent.com/rubberduckinatruck/tamper-control-center-v2/main/scripts/gmail/gmail-quick-sort-cleanup-panel.user.js",
+      "updateUrl": "https://raw.githubusercontent.com/rubberduckinatruck/tamper-control-center-v2/main/scripts/gmail/gmail-quick-sort-cleanup-panel.user.js",
+      "matches": [
+        "https://mail.google.com/*"
+      ],
+      "includes": [],
+      "excludes": [],
+      "grants": [
+        "none"
+      ],
+      "requires": [],
+      "runAt": null,
+      "noframes": false
+    },
+    {
+      "id": "apps-script-hidden-character-checker",
+      "name": "Apps Script Hidden Character Checker",
+      "installedName": "GAS Hidden Character Checker",
+      "version": "1.1.0",
+      "description": "Detects smart quotes, non-breaking spaces, zero-width characters, and other lookalike symbols that break Apps Script code but look normal to the eye. Rebuilt with pure DOM APIs to survive Trusted Types / CSP enforcement on script.google.com.",
+      "author": "Big Poppa",
+      "namespace": "https://github.com/g-tools",
+      "category": "google-apps-script",
+      "role": "development",
+      "status": "live",
+      "tags": [
+        "apps script",
+        "code checking",
+        "debugging",
+        "google",
+        "hidden characters"
+      ],
+      "note": null,
+      "file": "scripts/gas/apps-script-hidden-character-checker.user.js",
+      "installUrl": "https://raw.githubusercontent.com/rubberduckinatruck/tamper-control-center-v2/main/scripts/gas/apps-script-hidden-character-checker.user.js",
+      "updateUrl": "https://raw.githubusercontent.com/rubberduckinatruck/tamper-control-center-v2/main/scripts/gas/apps-script-hidden-character-checker.user.js",
+      "matches": [
+        "https://script.google.com/*"
+      ],
+      "includes": [],
+      "excludes": [],
+      "grants": [
+        "GM_addStyle",
+        "GM_setClipboard"
+      ],
+      "requires": [],
+      "runAt": "document-idle",
+      "noframes": false
+    },
     {
       "id": "gas-file-script-exporter",
       "name": "Google Apps Script File Exporter",
       "installedName": "GAS File Script Exporter",
       "version": "1.2.0",
       "description": "Export Apps Script project files from the editor UI: real clicks, Monaco/DOM/init-data fallbacks, TT/CSP-safe, duplicate-handling, progress UI, safe guards, and optional force-.txt download mode.",
-      "author": "you",
+      "author": "Big Poppa",
       "namespace": "https://tampermonkey.net/",
       "category": "google-apps-script",
       "role": "development",
@@ -52,9 +204,9 @@
         "google"
       ],
       "note": null,
-      "file": "scripts/gas-file-script-exporter.user.js",
-      "installUrl": "https://raw.githubusercontent.com/rubberduckinatruck/tamper-control-center-v2/main/scripts/gas-file-script-exporter.user.js",
-      "updateUrl": "https://raw.githubusercontent.com/rubberduckinatruck/tamper-control-center-v2/main/scripts/gas-file-script-exporter.user.js",
+      "file": "scripts/gas/gas-file-script-exporter.user.js",
+      "installUrl": "https://raw.githubusercontent.com/rubberduckinatruck/tamper-control-center-v2/main/scripts/gas/gas-file-script-exporter.user.js",
+      "updateUrl": "https://raw.githubusercontent.com/rubberduckinatruck/tamper-control-center-v2/main/scripts/gas/gas-file-script-exporter.user.js",
       "matches": [
         "https://script.google.com/*/home/projects/*/edit",
         "https://script.google.com/home/projects/*/edit",
@@ -71,12 +223,288 @@
       "noframes": true
     },
     {
+      "id": "gas-file-script-importer",
+      "name": "Google Apps Script File Importer",
+      "installedName": "GAS File Script Importer",
+      "version": "1.7.2",
+      "description": "Import local .gs, .js, .html, .htm, and .txt files into Google Apps Script using a verified sequential state machine.",
+      "author": "Big Poppa",
+      "namespace": "https://tampermonkey.net/",
+      "category": "google-apps-script",
+      "role": "development",
+      "status": "live",
+      "tags": [
+        "apps script",
+        "development",
+        "files",
+        "google",
+        "importer"
+      ],
+      "note": null,
+      "file": "scripts/gas/gas-file-script-importer.user.js",
+      "installUrl": "https://raw.githubusercontent.com/rubberduckinatruck/tamper-control-center-v2/main/scripts/gas/gas-file-script-importer.user.js",
+      "updateUrl": "https://raw.githubusercontent.com/rubberduckinatruck/tamper-control-center-v2/main/scripts/gas/gas-file-script-importer.user.js",
+      "matches": [
+        "https://script.google.com/*/home/projects/*/edit",
+        "https://script.google.com/home/projects/*/edit",
+        "https://script.google.com/u/*/home/projects/*/edit"
+      ],
+      "includes": [],
+      "excludes": [],
+      "grants": [
+        "unsafeWindow"
+      ],
+      "requires": [],
+      "runAt": "document-idle",
+      "noframes": true
+    },
+    {
+      "id": "google-classroom-originality-safe-overlay",
+      "name": "Google Classroom Originality Safe Overlay",
+      "installedName": "→ Google Classroom Originality Safe Overlay",
+      "version": "1.2",
+      "description": "Safe createElement-only originality summary capture tool for Google Classroom.",
+      "author": "Big Poppa",
+      "namespace": "classroom-originality-safe-overlay",
+      "category": "google-classroom",
+      "role": "teaching",
+      "status": "live",
+      "tags": [
+        "google classroom",
+        "grading",
+        "originality",
+        "overlay",
+        "student work"
+      ],
+      "note": null,
+      "file": "scripts/gc/google-classroom-originality-safe-overlay.user.js",
+      "installUrl": "https://raw.githubusercontent.com/rubberduckinatruck/tamper-control-center-v2/main/scripts/gc/google-classroom-originality-safe-overlay.user.js",
+      "updateUrl": "https://raw.githubusercontent.com/rubberduckinatruck/tamper-control-center-v2/main/scripts/gc/google-classroom-originality-safe-overlay.user.js",
+      "matches": [
+        "https://classroom.google.com/g/*"
+      ],
+      "includes": [],
+      "excludes": [],
+      "grants": [
+        "none"
+      ],
+      "requires": [],
+      "runAt": null,
+      "noframes": false
+    },
+    {
+      "id": "google-classroom-overlay-test",
+      "name": "Google Classroom Overlay Test",
+      "installedName": "Google Classroom Overlay Test",
+      "version": "0.1",
+      "description": "Displays a simple test overlay on Google Classroom student work pages.",
+      "author": "Big Poppa",
+      "namespace": "classroom-overlay-test",
+      "category": "google-classroom",
+      "role": "teaching",
+      "status": "beta",
+      "tags": [
+        "google classroom",
+        "overlay",
+        "student work",
+        "testing"
+      ],
+      "note": "Experimental test overlay intended for development and verification.",
+      "file": "scripts/gc/google-classroom-overlay-test.user.js",
+      "installUrl": "https://raw.githubusercontent.com/rubberduckinatruck/tamper-control-center-v2/main/scripts/gc/google-classroom-overlay-test.user.js",
+      "updateUrl": "https://raw.githubusercontent.com/rubberduckinatruck/tamper-control-center-v2/main/scripts/gc/google-classroom-overlay-test.user.js",
+      "matches": [
+        "https://classroom.google.com/g/*"
+      ],
+      "includes": [],
+      "excludes": [],
+      "grants": [
+        "none"
+      ],
+      "requires": [],
+      "runAt": null,
+      "noframes": false
+    },
+    {
+      "id": "chatgpt-exporter",
+      "name": "ChatGPT Exporter",
+      "installedName": "ChatGPT Exporter 2.32.3",
+      "version": "2.32.3",
+      "description": "Easily export the whole ChatGPT conversation history for further analysis or sharing.",
+      "author": "pionxzh",
+      "namespace": "pionxzh",
+      "category": "gpt",
+      "role": "personal",
+      "status": "live",
+      "tags": [
+        "backup",
+        "chatgpt",
+        "conversations",
+        "export",
+        "history"
+      ],
+      "note": "Third-party MIT-licensed userscript by pionxzh.",
+      "file": "scripts/gpt/chatgpt-exporter.user.js",
+      "installUrl": "https://raw.githubusercontent.com/rubberduckinatruck/tamper-control-center-v2/main/scripts/gpt/chatgpt-exporter.user.js",
+      "updateUrl": "https://raw.githubusercontent.com/rubberduckinatruck/tamper-control-center-v2/main/scripts/gpt/chatgpt-exporter.user.js",
+      "matches": [
+        "https://chat.openai.com/",
+        "https://chat.openai.com/?*",
+        "https://chat.openai.com/c/*",
+        "https://chat.openai.com/g/*",
+        "https://chat.openai.com/gpts",
+        "https://chat.openai.com/gpts/*",
+        "https://chat.openai.com/share/*",
+        "https://chat.openai.com/share/*/continue",
+        "https://chatgpt.com/",
+        "https://chatgpt.com/?*",
+        "https://chatgpt.com/c/*",
+        "https://chatgpt.com/g/*",
+        "https://chatgpt.com/gpts",
+        "https://chatgpt.com/gpts/*",
+        "https://chatgpt.com/share/*",
+        "https://chatgpt.com/share/*/continue",
+        "https://new.oaifree.com/",
+        "https://new.oaifree.com/?model=*",
+        "https://new.oaifree.com/c/*",
+        "https://new.oaifree.com/g/*",
+        "https://new.oaifree.com/gpts",
+        "https://new.oaifree.com/gpts/*",
+        "https://new.oaifree.com/share/*",
+        "https://new.oaifree.com/share/*/continue"
+      ],
+      "includes": [],
+      "excludes": [],
+      "grants": [
+        "GM_deleteValue",
+        "GM_getValue",
+        "GM_setValue",
+        "unsafeWindow"
+      ],
+      "requires": [
+        "https://cdn.jsdelivr.net/npm/jszip@3.9.1/dist/jszip.min.js"
+      ],
+      "runAt": "document-end",
+      "noframes": false
+    },
+    {
+      "id": "chatgpt-project-chat-archiver",
+      "name": "ChatGPT Project Chat Archiver",
+      "installedName": "ARCHIVE chats - v2 ChatGPT Project Chat Archiver",
+      "version": "2",
+      "description": "Discover backend ChatGPT project folders, count chats for all projects, and archive chats by project.",
+      "author": "Big Poppa",
+      "namespace": "https://chatgpt.com/",
+      "category": "gpt",
+      "role": "personal",
+      "status": "live",
+      "tags": [
+        "archive",
+        "chatgpt",
+        "cleanup",
+        "conversations",
+        "projects"
+      ],
+      "note": "Archives ChatGPT conversations by project; verify the selected project before running.",
+      "file": "scripts/gpt/chatgpt-project-chat-archiver.user.js",
+      "installUrl": "https://raw.githubusercontent.com/rubberduckinatruck/tamper-control-center-v2/main/scripts/gpt/chatgpt-project-chat-archiver.user.js",
+      "updateUrl": "https://raw.githubusercontent.com/rubberduckinatruck/tamper-control-center-v2/main/scripts/gpt/chatgpt-project-chat-archiver.user.js",
+      "matches": [
+        "https://chatgpt.com/*"
+      ],
+      "includes": [],
+      "excludes": [],
+      "grants": [
+        "GM_setClipboard"
+      ],
+      "requires": [],
+      "runAt": null,
+      "noframes": false
+    },
+    {
+      "id": "frequent-prompts",
+      "name": "Frequent AI Prompts",
+      "installedName": "Frequent Prompts (ChatGPT / Claude / Gemini)",
+      "version": "1.0.2",
+      "description": "Floating button + panel to save and instantly reuse your frequent prompts on ChatGPT, Claude, and Gemini.",
+      "author": "Big Poppa",
+      "namespace": "https://tampermonkey.net/",
+      "category": "gpt",
+      "role": "personal",
+      "status": "live",
+      "tags": [
+        "chatgpt",
+        "claude",
+        "gemini",
+        "productivity",
+        "prompts"
+      ],
+      "note": null,
+      "file": "scripts/gpt/frequent-prompts.user.js",
+      "installUrl": "https://raw.githubusercontent.com/rubberduckinatruck/tamper-control-center-v2/main/scripts/gpt/frequent-prompts.user.js",
+      "updateUrl": "https://raw.githubusercontent.com/rubberduckinatruck/tamper-control-center-v2/main/scripts/gpt/frequent-prompts.user.js",
+      "matches": [
+        "https://chatgpt.com/*",
+        "https://chat.openai.com/*",
+        "https://claude.ai/*",
+        "https://gemini.google.com/*"
+      ],
+      "includes": [],
+      "excludes": [],
+      "grants": [
+        "GM_getValue",
+        "GM_setValue",
+        "GM_registerMenuCommand"
+      ],
+      "requires": [],
+      "runAt": "document-idle",
+      "noframes": false
+    },
+    {
+      "id": "e-iep-pro-combined-iep-504-exporter",
+      "name": "e-IEP PRO IEP + 504 Excel Exporter",
+      "installedName": "e-IEP PRO - Combined IEP + 504 Excel Exporter",
+      "version": "5.0.0",
+      "description": "Extracts IEP accommodations/modifications and 504 accommodations into one organized Excel workbook.",
+      "author": "Big Poppa",
+      "namespace": "https://docs.e-iepdata.com/",
+      "category": "special-education",
+      "role": "teaching",
+      "status": "live",
+      "tags": [
+        "504 plans",
+        "accommodations",
+        "excel",
+        "export",
+        "iep",
+        "modifications"
+      ],
+      "note": "Requires authorized access to the e-IEP PRO general education portal.",
+      "file": "scripts/e-iep-pro-combined-iep-504-excel-exporter.user.js",
+      "installUrl": "https://raw.githubusercontent.com/rubberduckinatruck/tamper-control-center-v2/main/scripts/e-iep-pro-combined-iep-504-excel-exporter.user.js",
+      "updateUrl": "https://raw.githubusercontent.com/rubberduckinatruck/tamper-control-center-v2/main/scripts/e-iep-pro-combined-iep-504-excel-exporter.user.js",
+      "matches": [
+        "https://docs.e-iepdata.com/GENEDPORTALV18/*"
+      ],
+      "includes": [],
+      "excludes": [],
+      "grants": [
+        "GM_xmlhttpRequest",
+        "GM_notification"
+      ],
+      "requires": [
+        "https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"
+      ],
+      "runAt": "document-idle",
+      "noframes": false
+    },
+    {
       "id": "synergy-quick-grade-mapper",
       "name": "Synergy Quick Grade Mapper",
       "installedName": "2.5 UPDATED Synergy Quick Grade Mapper (Score + Missing/Late + Note)",
       "version": "2.5",
       "description": "Paste Name | Score/Letter | Comment | Note from Google Sheets and fill the Quick Grade page (letters, Missing/Late, public notes). Includes grade-scale presets, blank-score behavior toggle, diff-based writes, progress, preview, persistence, and colored logs.",
-      "author": "you",
+      "author": "Big Poppa",
       "namespace": "https://afsd.edupoint.com/",
       "category": "synergy",
       "role": "teaching",
@@ -90,9 +518,9 @@
         "scores"
       ],
       "note": null,
-      "file": "scripts/synergy-quick-grade-mapper.user.js",
-      "installUrl": "https://raw.githubusercontent.com/rubberduckinatruck/tamper-control-center-v2/main/scripts/synergy-quick-grade-mapper.user.js",
-      "updateUrl": "https://raw.githubusercontent.com/rubberduckinatruck/tamper-control-center-v2/main/scripts/synergy-quick-grade-mapper.user.js",
+      "file": "scripts/synergy/synergy-quick-grade-mapper.user.js",
+      "installUrl": "https://raw.githubusercontent.com/rubberduckinatruck/tamper-control-center-v2/main/scripts/synergy/synergy-quick-grade-mapper.user.js",
+      "updateUrl": "https://raw.githubusercontent.com/rubberduckinatruck/tamper-control-center-v2/main/scripts/synergy/synergy-quick-grade-mapper.user.js",
       "matches": [
         "https://*.edupoint.com/*",
         "https://afsd.edupoint.com/*"
@@ -125,9 +553,9 @@
         "student names"
       ],
       "note": null,
-      "file": "scripts/wayground-gradebook-points-extractor.user.js",
-      "installUrl": "https://raw.githubusercontent.com/rubberduckinatruck/tamper-control-center-v2/main/scripts/wayground-gradebook-points-extractor.user.js",
-      "updateUrl": "https://raw.githubusercontent.com/rubberduckinatruck/tamper-control-center-v2/main/scripts/wayground-gradebook-points-extractor.user.js",
+      "file": "scripts/wayground/wayground-gradebook-points-extractor.user.js",
+      "installUrl": "https://raw.githubusercontent.com/rubberduckinatruck/tamper-control-center-v2/main/scripts/wayground/wayground-gradebook-points-extractor.user.js",
+      "updateUrl": "https://raw.githubusercontent.com/rubberduckinatruck/tamper-control-center-v2/main/scripts/wayground/wayground-gradebook-points-extractor.user.js",
       "matches": [
         "https://wayground.com/session/admin/reports",
         "https://wayground.com/session/admin/reports/*"
@@ -142,5 +570,5 @@
       "noframes": true
     }
   ],
-  "migrationNotice": "12 userscripts are awaiting valid metadata and were skipped."
+  "migrationNotice": "13 userscripts are awaiting valid metadata and were skipped."
 }
