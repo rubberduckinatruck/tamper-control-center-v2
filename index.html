@@ -3,7 +3,7 @@
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Dashboard for the Tampermonkey Control Center script collection."><title>Control Center · Tampermonkey</title><link rel="stylesheet" href="assets/style.css"></head>
 <body>
   <div data-nav-slot></div>
-  <main class="page-shell">
+  <main class="page-shell page-shell--dashboard">
     <header class="hero"><div><p class="eyebrow">Tampermonkey Control Center v2</p><h1>Your scripts, without the scavenger hunt.</h1><p class="hero__lede">One automatically generated home for finding, installing, and maintaining your userscripts.</p></div><a class="button button--primary button--large" href="scripts.html">Open Script Library</a></header>
     <div id="page-notice" hidden></div>
     <div id="migration-notice" hidden></div>
@@ -11,8 +11,7 @@
       <div class="stat"><strong id="live-count">—</strong><span>Live scripts</span></div><div class="stat"><strong id="beta-count">—</strong><span>Beta scripts</span></div><div class="stat"><strong id="category-count">—</strong><span>Categories</span></div><div class="stat"><strong id="archive-count">—</strong><span>Archived versions</span></div>
     </section>
     <section class="content-section"><div class="section-heading"><div><p class="eyebrow">Browse by platform or purpose</p><h2>Categories</h2></div><a href="scripts.html">View everything →</a></div><div id="category-grid" class="category-grid"></div></section>
-    <section class="content-section content-section--split"><div><p class="eyebrow">Current catalog</p><h2>Scripts at a glance</h2><ul id="current-list" class="compact-list"></ul></div><aside class="callout"><h2>Adding something new?</h2><p>Place the userscript in its category folder, add the required <code>@cc-*</code> metadata, and push. GitHub rebuilds this catalog automatically.</p><a href="scripts/README.md">Read the contributor guide →</a></aside></section>
+    <section class="content-section content-section--split"><div><p class="eyebrow">Current catalog</p><h2>Scripts at a glance</h2><ul id="current-list" class="compact-list"></ul></div><aside class="callout"><h2>Adding something new?</h2><p>Place the userscript in <code>scripts/</code> or an optional subfolder, add the required <code>@cc-*</code> metadata, and push. The metadata category controls where it appears.</p><a href="https://github.com/rubberduckinatruck/tamper-control-center-v2/blob/main/scripts/README.md">Read the contributor guide →</a></aside></section>
   </main>
-  <footer>Generated from the userscripts in this repository. No hand-maintained script list required.</footer>
   <script type="module" src="assets/dashboard.js"></script>
 </body></html>

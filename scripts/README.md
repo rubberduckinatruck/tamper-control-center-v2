@@ -1,6 +1,6 @@
 # Current userscripts
 
-Place each current `live` or `beta` `.user.js` file directly in `scripts/` or in an optional category folder. The `@cc-category` value—not the folder—controls where the script appears in the Control Center.
+Place each current `live` or `beta` `.user.js` file directly in `scripts/` or in an optional subfolder. The `@cc-category` value—not the folder name—controls where the script appears in the Control Center.
 
 ```text
 scripts/
@@ -19,18 +19,35 @@ Rules:
 - Increase `@version` whenever installed code changes.
 - Both URL fields must equal the canonical raw URL for the file.
 
+Required Control Center metadata:
+
+```javascript
+// @cc-id            permanent-script-family-id
+// @cc-category      category-slug
+// @cc-status        live
+```
+
+Optional Control Center metadata:
+
+```javascript
+// @cc-display-name  Clean Human-Readable Name
+// @cc-role          teaching
+// @cc-tags          gradebook, grading, workflow
+// @cc-note          Optional short operational warning.
+```
+
 The update URLs must follow the file's actual physical path. For a file directly inside `scripts/`:
 
 ```javascript
-// @updateURL    https://raw.githubusercontent.com/rubberduckinatruck/tamper-control-center/main/scripts/quick-grade-mapper.user.js
-// @downloadURL  https://raw.githubusercontent.com/rubberduckinatruck/tamper-control-center/main/scripts/quick-grade-mapper.user.js
+// @updateURL    https://raw.githubusercontent.com/rubberduckinatruck/tamper-control-center-v2/main/scripts/quick-grade-mapper.user.js
+// @downloadURL  https://raw.githubusercontent.com/rubberduckinatruck/tamper-control-center-v2/main/scripts/quick-grade-mapper.user.js
 ```
 
 For a file physically stored in `scripts/synergy/`:
 
 ```javascript
-// @updateURL    https://raw.githubusercontent.com/rubberduckinatruck/tamper-control-center/main/scripts/synergy/quick-grade-mapper.user.js
-// @downloadURL  https://raw.githubusercontent.com/rubberduckinatruck/tamper-control-center/main/scripts/synergy/quick-grade-mapper.user.js
+// @updateURL    https://raw.githubusercontent.com/rubberduckinatruck/tamper-control-center-v2/main/scripts/synergy/quick-grade-mapper.user.js
+// @downloadURL  https://raw.githubusercontent.com/rubberduckinatruck/tamper-control-center-v2/main/scripts/synergy/quick-grade-mapper.user.js
 ```
 
-After adding or updating a script, run `npm run check`.
+After adding or updating a script, run `npm run check` locally or commit and push it so GitHub Actions can rebuild the catalog. A userscript with incomplete or invalid metadata is reported and skipped; it does not prevent valid scripts from being published.
